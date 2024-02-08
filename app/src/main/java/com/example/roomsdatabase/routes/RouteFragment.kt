@@ -1,4 +1,4 @@
-package com.example.roomsdatabase.Routes
+package com.example.roomsdatabase
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
-import com.example.roomsdatabase.R
 import com.example.roomsdatabase.databinding.FragmentRouteBinding
+import com.example.roomsdatabase.routes.RouteViewModel
 
 class RouteFragment : Fragment() {
     // TODO: Rename and change types of parameters
@@ -34,7 +34,7 @@ class RouteFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_route, container, false)
         binding.lifecycleOwner = this
-        binding.model = this.viewModel
+        //binding.model = this.viewModel
 
         binding.floatingActionButton.setOnClickListener{
             // Se añade el fragmento de Instalacion y se selecciona el route.

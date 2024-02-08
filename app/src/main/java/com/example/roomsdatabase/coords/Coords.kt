@@ -1,4 +1,4 @@
-package com.example.roomsdatabase.Coords
+package com.example.roomsdatabase.coords
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

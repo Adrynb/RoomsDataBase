@@ -1,4 +1,4 @@
-package com.example.roomsdatabase.Routes
+package com.example.roomsdatabase.routes
 
 import android.content.Context
 import com.example.roomsdatabase.GPSDatabase
@@ -6,6 +6,11 @@ import com.example.roomsdatabase.GPSDatabase
 class RouteRepository(private var context: Context) {
 
     private lateinit var routeDao : RouteDao
+
+    init {
+        val database= GPSDatabase.getInstance(context)
+        routeDao=database.routeDao()
+    }
 
     fun delete (item: Route){
         this.routeDao.delete(item)

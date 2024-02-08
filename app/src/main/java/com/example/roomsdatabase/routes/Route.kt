@@ -1,4 +1,4 @@
-package com.example.roomsdatabase.Routes
+package com.example.roomsdatabase.routes
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,12 +1,11 @@
-package com.example.roomsdatabase.Coords
+package com.example.roomsdatabase.coords
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.roomsdatabase.Routes.RouteWithCoords
+import com.example.roomsdatabase.routes.RouteWithCoords
 
 @Dao
 interface CoordinateDao {

@@ -6,9 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.roomsdatabase.Coords.CoordinateDao
-import com.example.roomsdatabase.Routes.Route
-import com.example.roomsdatabase.Routes.RouteDao
+import com.example.roomsdatabase.coords.CoordinateDao
+import com.example.roomsdatabase.routes.Route
+import com.example.roomsdatabase.routes.RouteDao
 
 @Database(
     entities = [Route::class],

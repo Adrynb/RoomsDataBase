@@ -1,9 +1,9 @@
-package com.example.roomsdatabase.Routes
+package com.example.roomsdatabase.routes
 
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Relation
-import com.example.roomsdatabase.Coords.Coords
+import com.example.roomsdatabase.coords.Coords
 
 @Entity
 data class RouteWithCoords(

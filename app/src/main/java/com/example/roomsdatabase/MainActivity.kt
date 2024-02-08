@@ -6,9 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.fragment.app.commit
-import com.example.roomsdatabase.Routes.RouteViewModel
-import com.example.roomsdatabase.Routes.RoutesList
+import com.example.roomsdatabase.routes.RoutesList
 import com.example.roomsdatabase.databinding.ActivityMainBinding
+import com.example.roomsdatabase.routes.RouteViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

@@ -1,4 +1,4 @@
-package com.example.roomsdatabase.Routes
+package com.example.roomsdatabase.routes
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
