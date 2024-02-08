@@ -34,7 +34,7 @@ class RoutesList : Fragment() {
         // Inflate the layout for this fragment
        view = inflater.inflate(R.layout.fragment_routes_list, container, false)
         view?.findViewById<RecyclerView>(R.id.listado)!!?.layoutManager = GridLayoutManager(context, 0)
-        view?.findViewById<RecyclerView>(R.id.listado)!!.adapter = this.viewmodel.allRoutes.value?.let { RouteRecyclerViewAdapter(it.toMutableList()) }
+        view?.findViewById<RecyclerView>(R.id.listado)!!.adapter = this.viewmodel.routes.value?.let { RouteRecyclerViewAdapter(it.toMutableList()) }
 
         return view
     }

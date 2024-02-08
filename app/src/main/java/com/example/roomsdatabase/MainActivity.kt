@@ -6,9 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.fragment.app.commit
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.example.roomsdatabase.Routes.RouteFragment
 import com.example.roomsdatabase.Routes.RouteViewModel
 import com.example.roomsdatabase.Routes.RoutesList
 import com.example.roomsdatabase.databinding.ActivityMainBinding
@@ -21,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         this.routeViewModel.init(this)
+
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

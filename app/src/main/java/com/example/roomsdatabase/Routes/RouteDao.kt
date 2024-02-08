@@ -1,6 +1,5 @@
 package com.example.roomsdatabase.Routes
 
-import androidx.lifecycle.LiveData
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
@@ -21,4 +20,7 @@ interface RouteDao {
 
     @Query("SELECT * FROM route")
     fun getAllRoutes(): List<Route>
+
+    @Query("SELECT * FROM route WHERE id = :routeId")
+    fun getCoordinatesForRoute(routeId: Long): RouteWithCoords
 }

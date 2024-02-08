@@ -1,17 +1,13 @@
 package com.example.roomsdatabase.Routes
 
 import android.content.Context
-import androidx.lifecycle.LiveData
-import com.example.roomsdatabase.Coords.Coordinate
-import com.example.roomsdatabase.Coords.CoordinateDao
 import com.example.roomsdatabase.GPSDatabase
 
 class RouteRepository(private var context: Context) {
 
     private lateinit var routeDao : RouteDao
-    private lateinit var coordDao : CoordinateDao
 
-    fun delete (item : Route){
+    fun delete (item: Route){
         this.routeDao.delete(item)
     }
 
@@ -37,20 +33,8 @@ class RouteRepository(private var context: Context) {
         }
     }
 
-    fun getCoordinatesForRoute(routeId: Long): LiveData<List<Coordinate>> {
-        return coordDao.getCoordinatesForRoute(routeId)
-    }
-
-     fun insertCoordinate(coordinate: Coordinate): Long {
-        return coordDao.insertCoordinate(coordinate)
-    }
-
-     fun updateCoordinate(coordinate: Coordinate) {
-        coordDao.updateCoordinate(coordinate)
-    }
-
-     fun deleteCoordinate(coordinate: Coordinate) {
-        coordDao.deleteCoordinate(coordinate)
+    fun getCoordinatesForRoute(routeId: Long): RouteWithCoords {
+        return this.routeDao.getCoordinatesForRoute(routeId)
     }
 
 

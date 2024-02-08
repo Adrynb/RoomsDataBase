@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.roomsdatabase.Routes.RouteWithCoords
 
 @Dao
 interface CoordinateDao {
@@ -19,5 +20,5 @@ interface CoordinateDao {
      fun deleteCoordinate(coordinate: Coords)
 
     @Query("SELECT * FROM routewithcoords WHERE id = :routeId")
-    fun getCoordinatesForRoute(routeId: Long): List<Coords>
+    fun getCoordinatesForRoute(routeId: Long): RouteWithCoords
 }

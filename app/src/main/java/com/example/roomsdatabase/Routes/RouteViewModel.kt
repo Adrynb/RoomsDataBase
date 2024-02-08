@@ -4,72 +4,55 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.roomsdatabase.Coords.Coordinate
-import kotlinx.coroutines.launch
 
-class RouteViewModel(private val routeRepository: RouteRepository) : ViewModel() {
+class RouteViewModel() : ViewModel() {
 
-    private val _allRoutes = MutableLiveData<List<Route>>()
-    val allRoutes: LiveData<List<Route>> = _allRoutes
+    private lateinit var _context: Context
+    lateinit var routeRepository: RouteRepository
+    private lateinit var _routes: MutableLiveData<MutableList<Route>>
 
     var selectedRoute = Route()
 
-    fun init(context: Context) {
-        routeRepository.init(context)
-        _allRoutes.value = routeRepository.getAllRoutes()
+
+    public val routes: LiveData<MutableList<Route>>
+        get() = _routes
+
+    fun init(C: Context) {
+        this._context = C
+        _routes = MutableLiveData()
+        this.routeRepository = RouteRepository(C)
+        this._routes.value = this.routeRepository.getAllRoutes()
     }
 
-    fun insertRoute(route: Route) {
-        routeRepository.insert(route)
-        _allRoutes.value = routeRepository.getAllRoutes()
-    }
-
-    fun updateRoute(route: Route) {
-        routeRepository.update(route)
-        _allRoutes.value = routeRepository.getAllRoutes()
-    }
-
-    fun deleteRoute(route: Route) {
-        routeRepository.delete(route)
-        _allRoutes.value = routeRepository.getAllRoutes()
-    }
-
-    fun getCoordinatesForRoute(routeId: Long): LiveData<List<Coordinate>> {
-        return routeRepository.getCoordinatesForRoute(routeId)
-    }
-
-    fun insertCoordinate(coordinate: Coordinate) = viewModelScope.launch {
-        routeRepository.insertCoordinate(coordinate)
-    }
-
-    fun updateCoordinate(coordinate: Coordinate) = viewModelScope.launch {
-        routeRepository.updateCoordinate(coordinate)
-    }
-
-    fun deleteCoordinate(coordinate: Coordinate) = viewModelScope.launch {
-        routeRepository.deleteCoordinate(coordinate)
+    fun getRouteWithCoords(): RouteWithCoords? {
+        return this.selectedRoute.id?.let { this.routeRepository.getCoordinatesForRoute(it) }
     }
 
     fun save() {
-        if (selectedRoute.id == null) {
 
-            // Nuevo elemento, agrega a la lista y guarda en la base de datos
-            selectedRoute.id = routeRepository.save(selectedRoute)
+        if(this.selectedRoute.id == null){
+            this._routes.value?.add(this.selectedRoute)
+            this.routeRepository.save(this.selectedRoute)
+            var saveRoute = this.selectedRoute
+            this.update()
 
-            // Obtener la lista actual
-            val currentRoutes = _allRoutes.value?.toMutableList() ?: mutableListOf()
-
-            // Agregar el nuevo elemento a la lista
-            currentRoutes.add(selectedRoute)
-
-            // Establecer el nuevo valor en _allRoutes
-            _allRoutes.value = currentRoutes
-        } else {
-            // Actualizar elemento existente en la base de datos
-            routeRepository.update(selectedRoute)
         }
+
+        this.routeRepository.save(this.selectedRoute)
+
     }
 
-}
 
+    fun update() {
+        var values = this._routes.value
+        this._routes.value = values
+    }
+
+    fun delete() {
+
+        this._routes.value?.remove(this.selectedRoute)
+        this.routeRepository.delete(this.selectedRoute)
+    }
+
+
+}

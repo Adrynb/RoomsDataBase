@@ -12,7 +12,6 @@ import androidx.fragment.app.viewModels
 import com.example.roomsdatabase.R
 import com.example.roomsdatabase.databinding.FragmentRouteBinding
 
-
 class RouteFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
@@ -37,15 +36,13 @@ class RouteFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.model = this.viewModel
 
-
         binding.floatingActionButton.setOnClickListener{
-
-            //Se añade el fragmento de Instalacion y se selecciona el route.
+            // Se añade el fragmento de Instalacion y se selecciona el route.
         }
 
         binding.cancelar.setOnClickListener{
-        val fm : FragmentManager = parentFragmentManager
-        fm.popBackStack()
+            val fm : FragmentManager = parentFragmentManager
+            fm.popBackStack()
         }
 
         binding.aceptar.setOnClickListener{
@@ -57,17 +54,13 @@ class RouteFragment : Fragment() {
 
         view = binding.root
         return view
-
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance() =
             RouteFragment().apply {
-
-                }
-
-
+                // Aquí puedes inicializar fragmento si es necesario
             }
     }
+}
